@@ -93,12 +93,17 @@ class MovieDetailsHeaderWithPoster extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal:16),
       child: Row(
         children: [
-          MoviePoster(Poster: movie.images[0].toString())
+          MoviePoster(Poster: movie.images[0].toString()),
+          const SizedBox(width: 16.0,),
+          Expanded
+          (
+            child: MovieDetailsHeader(movie: movie))
         ],
       ),
     );
   }
 }
+
 
 class MoviePoster extends StatelessWidget {
   final String Poster;
@@ -121,6 +126,49 @@ class MoviePoster extends StatelessWidget {
             ),
       ),
       ),
+    );
+  }
+}
+class MovieDetailsHeader extends StatelessWidget {
+  final Movie movie;
+  const MovieDetailsHeader({super.key, required this.movie});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text("${movie.year}. ${movie.genre}".toUpperCase(),style: const TextStyle(
+          fontWeight: FontWeight.w400,
+          color: Colors.cyan
+        ),),
+        Text(movie.title, style: const TextStyle(
+          fontWeight: FontWeight.w500,
+          fontSize: 32
+        ),),
+       Text.rich(
+          TextSpan(
+            style: const TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w300
+        ),
+        children: <TextSpan>[
+           TextSpan(
+            text: movie.plot
+           ),
+           const TextSpan(
+            text: "More...",
+            style: TextStyle(
+              color: Colors.indigoAccent
+            )
+           )
+
+        ]),
+        )
+      
+      ]
+      ,
+
     );
   }
 }

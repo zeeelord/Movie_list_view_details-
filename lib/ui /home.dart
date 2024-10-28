@@ -140,10 +140,9 @@ class MovieListView extends StatelessWidget {
   }
   TextStyle mainTextStyle(){
     return const TextStyle(    
-    color: Colors.black12
+    color: Colors.grey
     );
   }
-  
 
 }
 
