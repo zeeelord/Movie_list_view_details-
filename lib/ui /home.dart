@@ -135,7 +135,7 @@ class MovieListView extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => MovieListViewDetails(
+                builder: (context) => Movie_ListView_Details(
                       movieName: movie.title,
                       movie: movie,
                     )))
@@ -143,7 +143,6 @@ class MovieListView extends StatelessWidget {
     );
   }
 
-  // ignore: non_constant_identifier_names
   Widget movieImage(String Imageurl) {
     return Container(
       width: 100,
@@ -151,8 +150,10 @@ class MovieListView extends StatelessWidget {
       decoration: BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(
-              image: NetworkImage(Imageurl),
-              // image: DecorationImage(image: NetworkImage(Imageurl ?? "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc2ODg0MzMzM15BMl5BanBnXkFtZTgwODYxODA5NTE@._V1_SY1000_SX1500_AL_.jpg",),
+              image: NetworkImage(
+                Imageurl ??
+                    'https://images-na.ssl-images-amazon.com/images/M/MV5BMTc2ODg0MzMzM15BMl5BanBnXkFtZTgwODYxODA5NTE@._V1_SY1000_SX1500_AL_.jpg',
+              ),
               fit: BoxFit.cover)),
     );
   }
