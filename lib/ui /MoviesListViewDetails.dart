@@ -1,8 +1,9 @@
-// NEW ROUTE OR PAGE
-import 'package:flutter/material.dart';
+// ignore_for_file: file_names
 
+import 'package:flutter/material.dart';
 import 'package:listof_view_movies/model/movie.dart';
 
+// ignore: camel_case_types
 class Movie_ListView_Details extends StatelessWidget {
   final String movieName;
   final Movie movie;
