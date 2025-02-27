@@ -42,6 +42,8 @@ class Movie {
     required this.images,
   });
 
+  get actors => null;
+
   static List<Movie> getMovies() => [
         Movie(
           title: "Avatar",

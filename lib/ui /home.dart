@@ -152,7 +152,7 @@ class MovieListView extends StatelessWidget {
           shape: BoxShape.circle,
           image: DecorationImage(
               image: NetworkImage(
-                // the "??" means if the image is not provided or it is null use the next available format
+                // the "??" means if the image is not provided or if null use the next available element
                 Imageurl ??
                     'https://images-na.ssl-images-amazon.com/images/M/MV5BMTc2ODg0MzMzM15BMl5BanBnXkFtZTgwODYxODA5NTE@._V1_SY1000_SX1500_AL_.jpg',
               ),
