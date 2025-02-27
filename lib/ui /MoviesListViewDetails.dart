@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'package:listof_view_movies/model/movie.dart';
 
-class MovieListViewDetails extends StatelessWidget {
+class Movie_ListView_Details extends StatelessWidget {
   final String movieName;
   final Movie movie;
 
-  const MovieListViewDetails(
+  const Movie_ListView_Details(
       {super.key, required this.movieName, required this.movie});
 
   @override
@@ -87,7 +87,7 @@ class MovieDetailsHeaderWithPoster extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
-          MoviePoster(Poster: movie.images[0].toString()),
+          MoviePoster(poster: movie.images[0].toString()),
           const SizedBox(
             width: 16.0,
           ),
@@ -99,10 +99,10 @@ class MovieDetailsHeaderWithPoster extends StatelessWidget {
 }
 
 class MoviePoster extends StatelessWidget {
-  final String Poster;
+  final String poster;
   const MoviePoster({
     super.key,
-    required this.Poster,
+    required this.poster,
   });
 
   @override
@@ -116,7 +116,7 @@ class MoviePoster extends StatelessWidget {
           height: 160,
           decoration: BoxDecoration(
             image:
-                DecorationImage(image: NetworkImage(Poster), fit: BoxFit.cover),
+                DecorationImage(image: NetworkImage(poster), fit: BoxFit.cover),
           ),
         ),
       ),

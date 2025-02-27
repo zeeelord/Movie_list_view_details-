@@ -78,7 +78,7 @@ class MovieListView extends StatelessWidget {
               //     subtitle:  Text(movieList.elementAt(index).title),
               //    // onTap: ()=> debugPrint("Movie name: ${movies.elementAt(index)}"),
               //    onTap: (){
-              //      Navigator.push(context, MaterialPageRoute(builder: (context)=>MovieListViewDetails(movieName: movieList.elementAt(index).title,movie: movieList[index] ,)));
+              //      Navigator.push(context, MaterialPageRoute(builder: (context)=>Movie_ListView_Details(movieName: movieList.elementAt(index).title,movie: movieList[index] ,)));
               //    }
               //   ),
               // );
@@ -136,7 +136,7 @@ class MovieListView extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => MovieListViewDetails(
+                builder: (context) => Movie_ListView_Details(
                       movieName: movie.title,
                       movie: movie,
                     )))
