@@ -1,12 +1,13 @@
-// ignore_for_file: file_names
+// NEW ROUTE OR PAGE
 import 'package:flutter/material.dart';
+
 import 'package:listof_view_movies/model/movie.dart';
 
-class MovieListViewDetails extends StatelessWidget {
+class Movie_ListView_Details extends StatelessWidget {
   final String movieName;
   final Movie movie;
 
-  const MovieListViewDetails(
+  const Movie_ListView_Details(
       {super.key, required this.movieName, required this.movie});
 
   @override
