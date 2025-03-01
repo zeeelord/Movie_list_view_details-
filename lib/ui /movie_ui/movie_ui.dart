@@ -1,42 +1,5 @@
-// ignore_for_file: file_ names
-
 import 'package:flutter/material.dart';
 import 'package:listof_view_movies/model/movie.dart';
-
-// ignore: camel_case_types
-class Movie_ListView_Details extends StatelessWidget {
-  final String movieName;
-  final Movie movie;
-
-  const Movie_ListView_Details(
-      {super.key, required this.movieName, required this.movie});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Movies", style: mainTextStyle()),
-        centerTitle: false,
-        backgroundColor: Colors.blueGrey.shade900,
-      ),
-      body: ListView(
-        children: [
-          MovieDetailsThumbnail(thumbnail: movie.images[0]),
-          MovieDetailsHeaderWithPoster(movie: movie),
-          const Horizontal_line(),
-          MovieDetailsCast(movie: movie),
-          const Horizontal_line(),
-          Movie_extra_Poster(posters: movie.images)
-        ],
-      ),
-    );
-  }
-
-  TextStyle mainTextStyle() {
-    return const TextStyle(
-        fontWeight: FontWeight.bold, color: Color.fromARGB(255, 255, 255, 255));
-  }
-}
 
 class MovieDetailsThumbnail extends StatelessWidget {
   final String thumbnail;
