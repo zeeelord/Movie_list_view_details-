@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_ names
 
 import 'package:flutter/material.dart';
 import 'package:listof_view_movies/model/movie.dart';
@@ -22,7 +22,11 @@ class Movie_ListView_Details extends StatelessWidget {
       body: ListView(
         children: [
           MovieDetailsThumbnail(thumbnail: movie.images[0]),
-          MovieDetailsHeaderWithPoster(movie: movie)
+          MovieDetailsHeaderWithPoster(movie: movie),
+          const Horizontal_line(),
+          MovieDetailsCast(movie: movie),
+          const Horizontal_line(),
+          Movie_extra_Poster(posters: movie.images)
         ],
       ),
     );
@@ -51,7 +55,7 @@ class MovieDetailsThumbnail extends StatelessWidget {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 190,
+              height: 170,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: NetworkImage(thumbnail), fit: BoxFit.cover)),
@@ -99,7 +103,8 @@ class MovieDetailsHeaderWithPoster extends StatelessWidget {
 }
 
 class MoviePoster extends StatelessWidget {
-  final String poster;
+  // ignore: prefer_typing_uninitialized_variables
+  final poster;
   const MoviePoster({
     super.key,
     required this.poster,
@@ -144,7 +149,7 @@ class MovieDetailsHeader extends StatelessWidget {
         ),
         Text.rich(
           TextSpan(
-              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w300),
+              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w300),
               children: <TextSpan>[
                 TextSpan(text: movie.plot),
                 const TextSpan(
@@ -152,6 +157,111 @@ class MovieDetailsHeader extends StatelessWidget {
                     style: TextStyle(color: Colors.indigoAccent))
               ]),
         )
+      ],
+    );
+  }
+}
+
+class MovieDetailsCast extends StatelessWidget {
+  final Movie movie;
+  const MovieDetailsCast({super.key, required this.movie});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Column(
+        children: [
+          MovieField(field: "Cast", value: movie.actor),
+          MovieField(field: "Directors", value: movie.director),
+          MovieField(field: "Awards", value: movie.awards)
+        ],
+      ),
+    );
+  }
+}
+
+class MovieField extends StatelessWidget {
+  final String field;
+  // ignore: prefer_typing_uninitialized_variables
+  final value;
+  const MovieField({super.key, required this.field, this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "$field : ",
+          style: const TextStyle(
+              color: Colors.black38, fontSize: 12, fontWeight: FontWeight.w400),
+        ),
+        Expanded(
+          child: Text(
+            value.toString(),
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 12,
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+// ignore: camel_case_types
+class Horizontal_line extends StatelessWidget {
+  const Horizontal_line({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 12,
+      ),
+      child: Container(height: 0.5, color: Colors.grey),
+    );
+  }
+}
+
+// ignore: camel_case_types
+class Movie_extra_Poster extends StatelessWidget {
+  final posters;
+  const Movie_extra_Poster({super.key, required this.posters});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: Text("more movie posters".toUpperCase(),
+              style: const TextStyle(fontSize: 14, color: Colors.black26)),
+        ),
+        SizedBox(
+            height: 170,
+            child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => ClipRRect(
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 4,
+                        height: 160,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(posters[index]),
+                                fit: BoxFit.cover)),
+                      ),
+                    ),
+                separatorBuilder: (context, index) => const SizedBox(
+                      width: 8,
+                    ),
+                itemCount: posters.length))
       ],
     );
   }
